@@ -1,16 +1,14 @@
-console.log('First post!');
-let canvas = document.getElementById('canvas');
-canvas.addEventListener('mousedown', onMouseEvent, false);
-canvas.addEventListener('mouseup', onMouseEvent, false);
-canvas.addEventListener('click', onMouseEvent, false);
-canvas.addEventListener('dblclick', onMouseEvent, false);
-canvas.addEventListener('mousewheel', onMouseEvent, false);
-canvas.addEventListener('mousemove', onMouseEvent, false);
-canvas.addEventListener('mouseover', onMouseEvent, false);
-canvas.addEventListener('mouseout', onMouseEvent, false);
+window.onload = function () {
+  let canvas = document.getElementById( 'canvas' ),
+    mouse = utils.captureMouse( canvas );
 
-function onMouseEvent(event) {
-  console.log('\n' + 'Event: ' + event.type);
-  console.log('\n' + 'Modifiers: Shift=' + event.shiftKey + ' Ctrl=' + event.ctrlKey);
-  console.log('\n' + 'Event: ' + event.type);
-}
+  function onTouchEvent(event) {
+    console.log(event.type);
+  }
+  canvas.addEventListener('touchstart', onTouchEvent, false);
+  canvas.addEventListener('touchend', onTouchEvent, false);
+  canvas.addEventListener('touchmove', onTouchEvent, false);
+  canvas.addEventListener( 'mousedown', function () {
+    console.log( 'x/y: ' + mouse.x + ', ' + mouse.y );
+  }, false );
+};
